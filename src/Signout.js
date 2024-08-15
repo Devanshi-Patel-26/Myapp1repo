@@ -35,7 +35,7 @@ const Signout = () => {
           await deleteDoc(userRef);
           console.log("User data deleted successfully!");
         } else {
-          console.log("No user is currently logged in.");
+          console.log("No user is currently signed in.");
         }
       }
       // Delete the user account from Firebase Authentication
