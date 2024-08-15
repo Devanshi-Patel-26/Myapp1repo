@@ -16,15 +16,6 @@ const Home = () => {
       setAllDocs(allData);
     });
   }, []);
-
-  //   async function update(tel) {
-  //   const docRef = doc(db, "products", tel);
-
-  //   Update specific field
-  //   await updateDoc(docRef, {
-  //     productPrice: "1700"
-  //   });
-  // }
   
   return (
     <div className="wholepages">
