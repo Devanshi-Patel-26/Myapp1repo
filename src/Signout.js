@@ -35,21 +35,18 @@ const Signout = () => {
           await deleteDoc(userRef);
           console.log("User data deleted successfully!");
         } else {
-          console.log("No user document found for the given email.");
+          console.log("No user is currently logged in.");
         }
-
-        // Delete the user account from Firebase Authentication
-        await user.delete();
-        console.log("User account deleted successfully!");
-
-        // Sign out
-        await auth.signOut();
-        console.log("Signed out successfully!");
-        localStorage.removeItem("sigInEmail");
-        navigate("/signin");
-      } else {
-        console.log("No user is currently logged in.");
       }
+      // Delete the user account from Firebase Authentication
+      await user.delete();
+      console.log("User account deleted successfully!");
+
+      // Sign out
+      await auth.signOut();
+      console.log("Signed out successfully!");
+      localStorage.removeItem("sigInEmail");
+      navigate("/signin");
     } catch (error) {
       console.error("Error signing out or deleting user data:", error);
     }
