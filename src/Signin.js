@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Signin.css";
 import { useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -36,30 +35,6 @@ const Signin = () => {
 
   return (
     <div>
-      <nav className="navbar">
-        <ul className="navbar-list">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">
-              Signup
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/signout" className="navbar-link">
-              Signout
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/addprod" className="navbar-link">
-              Add Product
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
-            </Link>
-          </li>
-        </ul>
-      </nav>
       <div className="signin-container">
         <form onSubmit={handleSubmit} className="signin-form">
           <div className="form-group">

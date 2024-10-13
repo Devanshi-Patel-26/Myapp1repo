@@ -7,6 +7,8 @@ import { app, collection, onSnapshot, db, deleteDoc, doc, updateDoc } from "./Fi
 
 const Home = () => {
 
+  const nav = useNavigate();
+
   const [allDocs, setAllDocs] = useState([]);
 
   useEffect(() => {
@@ -22,23 +24,13 @@ const Home = () => {
       <nav className="navbar">
         <ul className="navbar-list">
           <li className="navbar-item">
-            <Link to="/" className="navbar-link">
-              Signup
-            </Link>
-          </li>
-          <li className="navbar-item">
             <Link to="/signout" className="navbar-link">
               Signout
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/addprod" className="navbar-link">
-              Add Product
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
+            <Link to="/signup" className="navbar-link">
+              logout
             </Link>
           </li>
         </ul>

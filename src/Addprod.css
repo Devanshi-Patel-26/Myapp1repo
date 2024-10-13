@@ -55,7 +55,7 @@ h2 {
 
 button {
   background-color: #007bff;
-  color: white;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 10px 15px;
   border-radius: 4px;
@@ -96,3 +96,4 @@ button:hover {
   background-color: #555;
   border-radius: 5px;
 }
+
