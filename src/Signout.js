@@ -1,6 +1,6 @@
 import React from "react";
 import "./Signout.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   auth,
   doc,
@@ -54,30 +54,6 @@ const Signout = () => {
 
   return (
     <div>
-      <nav className="navbar">
-        <ul className="navbar-list">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">
-              Signup
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/signout" className="navbar-link">
-              Signout
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/addprod" className="navbar-link">
-              Add Product
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
-            </Link>
-          </li>
-        </ul>
-      </nav>
       <div className="sign-out-container">
         <h1>Sign Out</h1>
         <br />

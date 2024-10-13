@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Link } from "react-router-dom";
 import { app, db, collection, addDoc } from "./FirebaseConfig";
 
 const Signup = () => {
@@ -57,30 +56,6 @@ const Signup = () => {
 
   return (
     <div className="p-4 bg-red-400 ">
-      <nav className="navbar">
-        <ul className="navbar-list">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">
-              Signup
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/signout" className="navbar-link">
-              Signout
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/addprod" className="navbar-link">
-              Add Product
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
-            </Link>
-          </li>
-        </ul>
-      </nav>
       <div className="signup-container">
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="signup-form">

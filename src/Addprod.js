@@ -1,19 +1,41 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Addprod.css";
-import { Link } from "react-router-dom";
+import "./Home.css";
+import { Link, useNavigate } from "react-router-dom";
 import {
   app,
   db,
+  onSnapshot,
   collection,
   addDoc,
+  deleteDoc,
+  doc
 } from "./FirebaseConfig";
 import { storage } from "./FirebaseConfig";
 import { ref, uploadBytes, getStorage , getDownloadURL} from "firebase/storage";
 
 const Addprod = () => {
 
+  const [allDocs, setAllDocs] = useState([]);
+
+  const nav = useNavigate();
+
   const [file, setFile] = useState(null);
+
+  useEffect(() => {const email= localStorage.getItem("signInEmail")
+    if(email === "admin1234@gmail.com"){
+        nav("/addprod");
+    }
+  })
+
+  useEffect(() => {
+        onSnapshot(collection(db, "products"), (snap) => {
+          const allData = snap.docs.map((e) => ({ id: e.id, ...e.data() }));
+          console.log(allData);
+          setAllDocs(allData);
+        });
+      }, []);
 
   const handleChange = (e) => {
     setFile(e.target.files[0]);
@@ -67,28 +89,22 @@ const Addprod = () => {
       });
   };
 
+  function del(it) {
+    deleteDoc(doc(db, "products", it));
+  }
+
   return (
     <div className="wholepage">
       <nav className="navbar">
         <ul className="navbar-list">
-          <li className="navbar-item">
-            <Link to="/" className="navbar-link">
-              Signup
-            </Link>
-          </li>
           <li className="navbar-item">
             <Link to="/signout" className="navbar-link">
               Signout
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/addprod" className="navbar-link">
-              Add Product
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/home" className="navbar-link">
-              Home
+            <Link to="/signup" className="navbar-link">
+              logout
             </Link>
           </li>
         </ul>
@@ -151,6 +167,31 @@ const Addprod = () => {
           <br/>
           <button type="submit">Submit</button>
         </form>
+      </div>
+      <div className="outer-box">
+        {allDocs.map((item, i) => (
+          <div key={i} className="box">
+            <p>Product ID: {item.productID}</p>
+            <p>Product Name: {item.productName}</p>
+            <p>Product Price: {item.productPrice}</p>
+            <p>Product Des: {item.productDes}</p>
+            <p src="productImage">Product url: {item.productImage}</p>
+            <button
+              onClick={() => {
+                del(item.id);
+              }}
+            >
+              delete
+            </button>
+            <button
+              onClick={() => {
+                nav(`/update/${item.id}`);
+              }}
+            >
+              update
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
