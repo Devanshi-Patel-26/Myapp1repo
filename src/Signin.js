@@ -23,7 +23,7 @@ const Signin = () => {
         console.log(user);
         localStorage.setItem("sigInEmail", email);
         if(email === "admin1234@gmail.com"){
-            nav("/admin");
+            nav("/addprod");
         }
       })
       .catch((error) => {
